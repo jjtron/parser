@@ -16,12 +16,15 @@ V -> "smiled" | "tell" | "were"
 
 NONTERMINALS = """
 S -> N V | NP | VP | NV NP | NV PP | NV ConjP | NV PP ConjP | NV NP ConjP 
-NV -> N V | Det N V | N Adv V | N V Adv
+S -> NV DetN PP |  NV DetN PP ConjP
+NV -> N V | Det N V | N Adv V | N V Adv | NV PP Adv
 NP -> N | NV | Det N | Det Adj N | NP Conj NP 
 NP -> NP VP Det NP | Det NP P NP
 VP -> V | V P | V P N | V Adv
-PP -> P Det N | P Det Adj N | P N
-ConjP -> Conj NP V | Conj NV PP | Conj NV PP Adv | Conj V Det N
+PP -> P Det N | P AdjN | P N
+AdjN -> Adj N | Det Adj N
+ConjP -> Conj NP V | Conj NV PP | Conj NV | Conj V Det N
+ConjP -> Conj V N PP | Conj V N
 DetN -> Det N | Det Adj N
 """
 
